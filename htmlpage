@@ -4,7 +4,7 @@
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 
 <script>
-function initializeMap {
+function initializeMap() {
   var mapObj = {
     center:new google.maps.LatLng(0, -1),
     zoom:8,
