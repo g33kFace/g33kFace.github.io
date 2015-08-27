@@ -14,9 +14,6 @@ body {
 <!-- AngularJS library -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 
-<!-- App & Controller -->
-<script src="appctrl.js"></script>
-
 <!-- Google Maps API library -->
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 
@@ -31,6 +28,12 @@ function initializeMap() {
 }
 google.maps.event.addDomListener(window, 'load', initializeMap);
 </script>
+
+<!-- OAuth.io -->
+<script src="oauth.js"></script>
+
+<!-- App & Controller -->
+<script src="appctrl.js"></script>
 </head>
 
 <body ng-controller="tweetController">
@@ -39,22 +42,16 @@ google.maps.event.addDomListener(window, 'load', initializeMap);
     <div class="navbar-header">
       <a class="navbar-brand" href="#">"X" Marks the Spot</a>
     </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a ng-click="">Connect to Twitter</a></li>
-        <li><a ng-click="">Refresh Timeline</a></li>
-      </ul>
-    </div>
-  </div> <!-- /container -->
+  </div>
 </nav>
 
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <p>Twitter</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <div id="googleMap" style="width:500px;height:380px;"></div>
       </div>
     </div> <!-- /row -->
@@ -62,7 +59,20 @@ google.maps.event.addDomListener(window, 'load', initializeMap);
 </div> <!-- /jumbotron -->
 
 <div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <button ng-click="" type="button" class="btn btn-primary">Connect to Twitter</button>
+    </div>
+    <div class="col-md-4">
+      <button ng-click="" type="button" class="btn btn-info">Refresh Timeline</button>
+    </div>
+    <div class="col-md-4">
+      <button ng-click="" type="button" class="btn btn-link">Sign Out</button>
+    </div>
+  </div> <!-- /row -->
+
   <hr>
+
   <footer>
     <p>Web App by Stephen D.</p>
   </footer>
