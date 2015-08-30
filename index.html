@@ -73,7 +73,8 @@
                             <img ng-src="{{ t.user.profile_image_url }}" class="img-circle" />
                         </div>
                         <div class="col-sm-10">
-                            <p>name{{ t.full_name }}</p>
+                            <button>{{ t.place.full_name }}</button>
+                            <p>{{t.place.bounding_box.coordinates}}</p>
                         </div>
                     </div>
                 </div>
@@ -90,7 +91,8 @@
                 <button ng-click="connectTwitter()" id="connectBtn" type="button" class="btn btn-primary" style="display: inline-block">Connect to Twitter</button>
             </div>
             <div class="col-md-4">
-                <button ng-click="getPlaces(); refresh()" id="placesBtn" type="button" class="btn btn-info" style="display: none">Get Places</button>
+                <input id="qString" type="text" style="display: none" />
+                <button ng-click="getPlaces()" id="placesBtn" type="button" class="btn btn-info" style="display: none">Get Places</button>
             </div>
             <div class="col-md-4">
                 <button ng-click="signOut()" id="signOutBtn" type="button" class="btn btn-link" style="display: none">Sign Out</button>

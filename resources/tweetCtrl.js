@@ -1,10 +1,10 @@
 app.controller("tweetCtrl", function ($scope) {
     $scope.tweets;
     $scope.oauthResult;
-    $scope.donothing;
 
-    $scope.addMarker = function (lat, lng) {
-
+    $scope.addMarker = function (coords) {
+        var lat = coords[1];
+        var lng = coords[0];
     }
 
     $scope.connectTwitter = function () {
@@ -14,6 +14,7 @@ app.controller("tweetCtrl", function ($scope) {
             $scope.oauthResult = result;
             document.getElementById("connectBtn").style.display = "none";
             document.getElementById("placesBtn").style.display = "inline-block";
+            document.getElementById("qString").style.display = "inline-block";
             document.getElementById("signOutBtn").style.display = "inline-block";
         })
         .fail(function (err) {
@@ -22,11 +23,11 @@ app.controller("tweetCtrl", function ($scope) {
     }
 
     $scope.getPlaces = function () {
+        var query = document.getElementById("qString").value;
         var lat = document.getElementById("lat").innerHTML;
         var lng = document.getElementById("lng").innerHTML;
-        $scope.oauthResult.get("/1.1/search/tweets.json?q=geocache&geocode=" + lat + "," + lng + "250mi").done(function (response) {
-        //$scope.oauthResult.get("/1.1/search/tweets.json?q=football").done(function (response) {
-        //$scope.oauthResult.get("/1.1/statuses/home_timeline.json").done(function (response) {
+        //$scope.oauthResult.get("/1.1/search/tweets.json?q=" + query + "&geocode=" + lat + "," + lng + "250mi").done(function (response) {
+        $scope.oauthResult.get("/1.1/statuses/home_timeline.json").done(function (response) {
         //$scope.oauthResult.get("https://api.twitter.com/1.1/geo/reverse_geocode.json?lat=" + lat + "&long=" + lng).done(function (response) {
             console.log(response);
             $scope.tweets = response;
@@ -42,10 +43,7 @@ app.controller("tweetCtrl", function ($scope) {
         OAuth.clearCache('twitter');
         document.getElementById("connectBtn").style.display = "inline-block";
         document.getElementById("placesBtn").style.display = "none";
+        document.getElementById("qString").style.display = "none";
         document.getElementById("signOutBtn").style.display = "none";
-    }
-
-    $scope.refresh = function () {
-        $scope.donothing = 0;//do a whole lot of nothing to refesh html page view
     }
 });
