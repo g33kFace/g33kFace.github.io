@@ -26,8 +26,8 @@ app.controller("tweetCtrl", function ($scope) {
         var query = document.getElementById("qString").value;
         var lat = document.getElementById("lat").innerHTML;
         var lng = document.getElementById("lng").innerHTML;
-        //$scope.oauthResult.get("/1.1/search/tweets.json?q=" + query + "&geocode=" + lat + "," + lng + "250mi").done(function (response) {
-        $scope.oauthResult.get("/1.1/statuses/home_timeline.json").done(function (response) {
+        $scope.oauthResult.get("/1.1/search/tweets.json?q=" + query + "&geocode=" + lat + "," + lng + "250mi").done(function (response) {
+        //$scope.oauthResult.get("/1.1/statuses/home_timeline.json").done(function (response) {
         //$scope.oauthResult.get("https://api.twitter.com/1.1/geo/reverse_geocode.json?lat=" + lat + "&long=" + lng).done(function (response) {
             console.log(response);
             $scope.tweets = response;
